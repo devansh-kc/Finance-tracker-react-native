@@ -4,12 +4,8 @@ export default function RootLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
-        contentStyle: { backgroundColor: "white" },
+        headerShown: false, // Hide headers globally, or customize per screen
       }}
-    >
-      <Stack.Screen name="index" />
-      <Stack.Screen name="login" />
-    </Stack>
+    />
   );
 }

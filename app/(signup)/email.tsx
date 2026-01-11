@@ -1,53 +1,60 @@
-import { HeaderComponent } from "@/components/header/header-component";
 import { Colors } from "@/constants/theme";
+import { useRouter } from "expo-router";
+import { ChevronRight } from "lucide-react-native";
 import React from "react";
 import {
   Image,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
-const signUp = () => {
+const UserNameEmailScreen = () => {
   const localImageSource = require("@/assets/images/signup-Illustration.png");
+  const router = useRouter();
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <HeaderComponent title="Sign Up" />
-      <View style={styles?.container}>
-        <View style={styles?.card}>
-          <View>
-            <Text style={styles?.loginHeading}>Welcome To Us</Text>
-            <Text>Hello there, Create an Account</Text>
-          </View>
-          <Image source={localImageSource} style={styles.image} />
-          <View>
-            <TextInput placeholder="User Name" style={styles.input} />
-            <TextInput placeholder="Email" style={styles.input} />
-            <TextInput placeholder="First Name" style={styles.input} />
-            <TextInput placeholder="Last Name" style={styles.input} />
-            <TextInput
-              placeholder="Password"
-              style={styles.input}
-              autoCapitalize="none"
-              secureTextEntry={true}
-            />
-            <TouchableOpacity style={styles.signInButton}>
-              <Text style={styles.signInButtonText}>Sign in</Text>
-            </TouchableOpacity>
-          </View>
+    <View style={styles?.container}>
+      <View style={styles?.card}>
+        <View>
+          <Text style={styles?.loginHeading}>Welcome To Us</Text>
+          <Text>Hello there, Create an Account</Text>
+        </View>
+        <Image source={localImageSource} style={styles.image} />
+        <View>
+          <TextInput placeholder="User Name" style={styles.input} />
+          <TextInput placeholder="Email" style={styles.input} />
+          <TextInput
+            placeholder="Password"
+            style={styles.input}
+            autoCapitalize="none"
+            secureTextEntry={true}
+          />
+          <TouchableOpacity
+            style={styles.signInButton}
+            onPress={() => router.push("/security")}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 4,
+              }}
+            >
+              <Text style={styles.signInButtonText}>Next</Text>
+              <ChevronRight size={20} color="#3629B7" />
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
-export default signUp;
+export default UserNameEmailScreen;
 
 const styles = StyleSheet.create({
   image: {
